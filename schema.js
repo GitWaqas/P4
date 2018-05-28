@@ -10,7 +10,7 @@ type Friend {
     email: String
 }
 type Query {
-    friend: Friend
+    getFriend(id:ID):Friend
 }
 
 
