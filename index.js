@@ -8,7 +8,16 @@ app.get('/', (req, res) => {
 	res.send('GraphQL is amazing');
 });
 
-const root = { hello: () => "Hi i'm manny" };
+const root = { friend: () => {
+    return {
+        "id": 25874231,
+        "fname": "Larry",
+        "lname":"Jensen",
+        "lang":"en",
+        "email":"hello@juka.net",      
+    
+    }
+} }; //resolver must match model
 
 app.use(
 	'/graphql',
