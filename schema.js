@@ -5,9 +5,25 @@ type Friend {
     id:ID
     firstName: String
     lastName: String
-    gender: String
+    gender: Gender
     language: String
     email: String
+    contacts: [Contacts]
+}
+
+type Contacts{
+    firstName:String
+    lastName:String
+}
+input ContactInput{
+    firstName:String
+    lastName:String
+
+}
+enum Gender {
+    MALE
+    FEMALE
+    HELICOPTER
 }
 type Query {
     getFriend(id:ID):Friend
@@ -20,9 +36,10 @@ input FriendInput {
     id:ID
     firstName: String!
     lastName: String
-    gender: String
+    gender: Gender
     language: String
     email: String
+    contacts:[ContactInput]
 
 }
 
