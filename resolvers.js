@@ -11,15 +11,22 @@ class Friend {
 }
 
 const friendDB = {};
-const resolvers = {
-	getFriend: ({ id }) => {
-		return new Friend(id, friendDB[id]);
-	},
-	createFriend: ({ input }) => {
-		let id = require('crypto').randomBytes(10).toString('hex');
-		friendDB[id] = input;
-		return new Friend(id, input);
-	}
-}; //resolver must match model
 
-export default resolvers;
+// resolver map
+export const resolvers = {
+    Query: {
+        getFriend: ({ id }) => {
+            return new Friend(id, friendDB[id]);
+        },
+    },
+    Mutation: {
+        createFriend: ({ input }) => {
+            let id = require('crypto').randomBytes(10).toString('hex');
+            friendDB[id] = input;
+            return new Friend(id, input);
+        },
+    },
+};
+
+//resolver must match model
+
